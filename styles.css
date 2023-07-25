@@ -1,0 +1,264 @@
+/* General Reset */
+
+/* https://piccalil.li/blog/a-modern-css-reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  --webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+   line-height: 1;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* End General Reset */
+
+/* General Settings */
+
+:root {
+  /* Primary Colors */
+  --primary: hsl(193, 38%, 86%);
+  --secondary: hsl(150, 100%, 66%);
+
+  /* Neutral Colors */
+  --neutral-1: hsl(217, 19%, 38%);
+  --neutral-2: hsl(217, 19%, 24%);
+  --neutral-3: hsl(218, 23%, 16%);
+
+  /* Fonts Family */
+  --ff-body: 'Manrope', sans-serif;
+
+  /* Fonts Weight */
+  --fw-extra-bold: 800;
+
+  /* Font Size */
+  --fs-title: 0.75rem;
+  --fs-advice: 1.75rem;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  -webkit-clip-path: inset(50%) !important;
+  height: 1px !important;
+  width: 1px !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  padding: 0 !important;
+  margin: -1px !important;
+}
+
+/* End General Settings */
+
+/* General Styling */
+
+body {
+  background: var(--neutral-3);
+  font-family: var(--ff-body);
+  font-weight: var(--fw-extra-bold);
+  color: var(--primary);
+  font-size: var(--fs-title);
+
+  /* For this project only */
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* End General Styling */
+
+/* Section Style */
+
+.container {
+  max-width: 500px;
+  background: var(--neutral-2);
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  position: relative;
+}
+
+.title {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--secondary);
+}
+
+.text {
+  text-align: center;
+  font-size: var(--fs-advice);
+}
+
+.divisor {
+  margin: 1rem 0;
+}
+
+.generate-advice {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+
+  background: url('images/icon-dice.svg'), var(--secondary);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+
+  position: absolute;
+  bottom: calc(0px - 25px);
+  transition: 0.25s ease;
+}
+
+.generate-advice:hover {
+  box-shadow: 0px 0px 7.5px 7.5px rgba(82, 255, 168, 0.25);
+}
+
+@media screen and (max-width: 500px) {
+  section {
+    padding: 1rem;
+  }
+  .container {
+    padding-inline: 1rem;
+  }
+}
+
+/* End Section Style */
+
+/* Animations */ 
+
+.overflow-cntrl {
+  overflow: hidden;
+}
+
+.comeInLeft {
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: comeInLeft 0.5s ease forwards;
+}
+
+@keyframes comeInLeft {
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.comeInUp {
+  opacity: 0;
+  transform: translateY(100%);
+  animation: comeInUp 0.5s ease forwards;
+}
+
+@keyframes comeInUp {
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.comeInRight {
+  transform: translateX(100%);
+  opacity: 0;
+  animation: comeInRight 0.5s ease forwards;
+}
+
+@keyframes comeInRight {
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animations End */
